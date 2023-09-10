@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <h1>Iniciar Sesión</h1>
+    <form id="loginForm">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Iniciar Sesión">
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Aquí puedes agregar código para validar las credenciales y redirigir al usuario si son correctas.
+            // Este es solo un ejemplo básico.
+            
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            if (username === 'usuario' && password === 'contraseña') {
+                alert('Inicio de sesión exitoso');
+                // Puedes redirigir al usuario a otra página aquí.
+            } else {
+                alert('Credenciales incorrectas. Intenta de nuevo.');
+            }
+        });
+    </script>
+</body>
+</html>
