@@ -2,38 +2,101 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>FORMULARIO DE REGISTRO E INICIO SESIÓN</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
-    <form id="loginForm">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Iniciar Sesión">
-    </form>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    <!-- primer container de bienvenida -->
+
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <h2>Bienvenido</h2>
+                <p>Para unirte a nuestra comunidad, puedes crear una cuenta con tus datos.</p>
+                <input type="button" value="Crear Sesión" id="sign-up">
+            </div>
+        </div>
+        
+        <div class="form-information">
+            <div class="form-information-childs"> 
+                <h2> Iniciar Seción </h2>
+                <div class="icons">
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-facebook'></i>
+                    <i class='bx bx-envelope'></i> 
+                </div>
+                
+                <form class="formu">
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Nombre Usuario">
+                    </label>
+
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Nombre Usuario">
+                    </label>
+
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" placeholder="Contraseña">
+                    </label>
+                    <input type="submit" value="Iniciar"> 
+                </form>
             
-            // Aquí puedes agregar código para validar las credenciales y redirigir al usuario si son correctas.
-            // Este es solo un ejemplo básico.
+            </div>
+        </div>
+    </div>
+
+<!-- segundo container para el Registro -->
+
+    <div class="container-form login hide"> <!-- permite el efecto de desaparecer -->
+        <div class="information">
+            <div class="info-childs">
+                <h2>¡¡Que bueno es Verlo!</h2>
+                <p>Para unirte a nuestra comunidad, puedes crear una cuenta con tus datos.</p>
+                <input type="button" value="Registarse" id="sign-up">
+            </div>
+        </div>
+        
+        <div class="form-information">
+            <div class="form-information-childs"> 
+                <h2> Iniciar Seción </h2>
+                <div class="icons">
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-facebook'></i>
+                    <i class='bx bx-envelope'></i> 
+                </div>
+                
+                <form class="formu">
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Nombre Usuario">
+                    </label>
+
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" placeholder="Contraseña">
+                    </label>
+                    <input type="submit" value="Crear Seción"> 
+                </form>
             
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            
-            if (username === 'usuario' && password === 'contraseña') {
-                alert('Inicio de sesión exitoso');
-                // Puedes redirigir al usuario a otra página aquí.
-            } else {
-                alert('Credenciales incorrectas. Intenta de nuevo.');
-            }
-        });
-    </script>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/iniciar_secionn.js"></script>
+    
 </body>
 </html>
