@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'estilo2.css' %}">
+
+</head>
+
+<body>
+  
+
+
+    <h1 id="titulo-form">¿Tienes Preguntas?</h1>
+
+<!-- Formulario -->
+<form action="" class="formulario" id="formulario">
+
+    <div id="background-container">
+        <!-- Contenedor con color de fondo -->
+        <div id="container">
+            <!-- Contenedor del formulario -->
+            
+            <!-- Grupo: Nombre -->
+            <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Nombre completo:</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Eje: Alberto Dias">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Solo se permite letras sin guion y sin números.</p>
+            </div>
+
+            <!-- Grupo: Correo Electrónico -->
+            <div class="formulario__grupo" id="grupo__correo">
+                <label for="correo" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, números, puntos, guiones y guion bajo.</p>
+            </div>
+
+            <!-- Grupo: Asunto -->
+            <div class="formulario__grupo" id="grupo__asunto">
+                <label for="asunto" class="formulario__label">Asunto</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="asunto" id="asunto">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <!-- No se proporciona mensaje de error para el asunto -->
+            </div>
+
+            <!-- Grupo: Mensaje -->
+            <div class="formulario__grupo" id="grupo__mensaje">
+                <label for="mensaje" class="formulario__label">Mensaje</label>
+                <div class="formulario__grupo-input">
+                    <textarea name="mensaje" id="mensaje" cols="40" rows="5" class="formulario__input"></textarea>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Por favor, ingrese un mensaje.</p>
+            </div>
+
+            <!-- Grupo: Botón de Enviar -->
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor, complete el formulario correctamente.</p>
+            </div>
+
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Enviar</button>
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+            </div>
+            
+        </div>
+    </div>
+</form>
+
+
+    <!-- ---------------------------------------------------------------------------------- -->
+    <!-- --------------------es para que sirva los validadores---------------------- -->
+     <!-- ---------------------------------------------------------------------------------- -->
+
+    <footer>
+
+    <p>si quieres saber mas de nosotros contactanos:</p>
+
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <script src="{% static 'js/validador.js' %}"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

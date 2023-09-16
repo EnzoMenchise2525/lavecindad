@@ -178,7 +178,7 @@ body {
 /* ---------------- efecto desaparecer ------------ */
 .hide {
     position: absolute;
-    transform: translateY(-300px);
+    transform: translateY(-300%);
 }
 
 /* --------------------------------------------- */

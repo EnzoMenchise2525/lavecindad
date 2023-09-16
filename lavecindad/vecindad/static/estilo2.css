@@ -1,0 +1,397 @@
+/* Estilos para pantallas grandes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #0073e6; /* Texto azul */
+    font-family: Arial, sans-serif;
+}
+
+
+/* ----------------------------------------------------------- */
+/* -------------------menu---------------- */
+/* ----------------------------------------------------------- */
+
+/* Estilos para el header y la navegación */
+header {
+    background-color: #0073e6; /* Fondo azul para el encabezado */
+    color: #ffffff; /* Texto blanco para el encabezado */
+    padding: 10px;
+    position: fixed; /* Establece la posición fija */
+    width: 100%; /* Ocupa todo el ancho de la ventana */
+    top: 0; /* Muestra el encabezado al principio */
+    left: 0; /* Ancla el encabezado en la parte izquierda */
+    z-index: 1; /* Asegura que el encabezado esté encima de las imágenes */
+    transition: top 0.3s; /* Agrega una transición suave para el efecto */
+}
+
+nav ul.menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: right; /* Alinea los elementos a la derecha */
+    position: relative; /* Añade posición relativa al menú */
+    z-index: 3; /* Asigna un valor de z-index mayor para el menú */
+}
+
+nav ul.menu li {
+    display: inline-block; /* Muestra los elementos en línea */
+    margin-right: 30px; /* Espacio mayor entre elementos del menú */
+    position: relative; /* Agrega posición relativa para centrar el texto */
+}
+
+nav ul.menu a {
+    text-decoration: none;
+    color: #ffffff; /* Texto blanco para enlaces */
+    font-size: 20px; /* Tamaño de la letra en píxeles */
+    transition: color 0.3s ease; /* Transición de color suave al pasar el ratón */
+    display: block; /* Convierte en bloque para centrar el texto */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+nav ul.menu a:hover {
+    color: #ff9900; /* Cambia el color al pasar el ratón */
+    text-align: center
+}
+
+/* Estilos para el submenu */
+nav ul.menu .submenu {
+    position: relative; /* Agrega posición relativa al elemento padre "Proyectos" */
+}
+
+nav ul.menu .submenu-items {
+    display: none; /* Oculta el submenu por defecto */
+    position: absolute;
+    top: 100%; /* Muestra el submenu debajo del elemento padre */
+    left: 50%; /* Centra el submenu horizontalmente */
+    transform: translateX(-50%); /* Centra el submenu horizontalmente */
+    background-color: #0073e6; /* Fondo azul para el submenu */
+    color: #ffffff; /* Texto blanco para elementos del submenu */
+    padding: 12px;
+    text-align: center; /* Alinea el texto del submenu al centro */
+}
+
+nav ul.menu .submenu:hover .submenu-items {
+    display: block; /* Muestra el submenu al pasar el ratón sobre "Proyectos" */
+}
+
+nav ul.menu .submenu-items li {
+    margin-bottom: 20px; /* Espacio mayor entre elementos del submenu */
+}
+
+/* Estilos para el submenu */
+nav ul.menu .submenu-items a {
+    text-decoration: none;
+    display: block; /* Convierte en bloque para centrar el texto */
+    text-align: center; /* Centra el texto horizontalmente en el submenu */
+    padding-left: 19px; /* Ajusta el espacio a la izquierda */
+}
+
+/* Estilos para el botón de Iniciar Sesión */
+nav ul.menu .inicioseccion button {
+    background-color:aqua;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+nav ul.menu .inicioseccion i {
+    font-size: 20px; /* Tamaño del icono */
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul.menu {
+        text-align: center; /* Alinea los elementos al centro en pantalla pequeña */
+    }
+
+    nav ul.menu li {
+        display: block; /* Muestra los elementos uno debajo del otro */
+        margin: 10px 0; /* Espacio entre elementos del menú */
+    }
+}
+
+footer {
+    width: 100%;
+    padding: 10px;
+    background-color: #080808; /* Cambio del color de fondo */
+    color: #ffffff; /* Texto en color blanco */
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    margin-top: 90px;
+    /* Eliminé 'margin: 0;' ya que no es necesario en este caso */
+}
+
+
+
+/* ----------------------------------------------------------- */
+/* ------------------ enviar mensaje de consulta --------------*/ 
+/* ----------------------------------------------------------- */
+
+/* Estilos para el contenedor principal */
+#background-container {
+    background-color: #42EB42;
+    min-height: 50vh;
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    align-items: center;
+}
+
+#container {
+    width: 100%; /* Ancho del formulario al 100% para ocupar todo el ancho disponible */
+    padding: 30px;
+    background-color: #42EB42;
+    text-align: left;
+}
+
+#titulo-form {
+    text-align: left;
+    color: #ffffff;
+    margin-top: 0;
+    background-color: #416941;
+    margin: 0;
+    padding: 30px;
+}
+
+/* Estilos para el formulario */
+#formulario-contacto {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #42EB42;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #008000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #006400;
+}
+
+/* Estilos para el formulario */
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    background: #42EB42;
+    padding: 2em;
+    transition: 0.5s;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Cambia la alineación de los labels a la derecha */
+.formulario__label {
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+    text-align: right; /* Alinea el texto del label a la derecha */
+    width: 100%; /* Asegura que los labels ocupen todo el ancho disponible */
+}
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input {
+    width: 100%;
+    background-color: #f5ecec;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 3em;
+    line-height: 3em;
+    padding: 0.5em;
+    transition: .3s ease all;
+}
+
+.formulario__btn {
+    width: 50%;
+    height: 3em;
+    line-height: 3em;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.container2 {
+    align-items: center;
+    width: 100%;
+    background: lightgray;
+    margin-bottom: 10em;
+    border-radius: 1em;
+    padding: 1em;
+    transition: 0.5s;
+}
+
+/* Estilos para los campos del formulario */
+.formulario__label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input {
+    width: 20em;
+    background-color: #f5ecec;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 3em;
+    line-height: 3em;
+    padding: 0 3em 0 1em;
+    transition: .3s ease all;
+}
+
+.formulario__input:focus {
+    border: 3px solid #0075FF;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.formulario__input-error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.formulario__checkbox {
+    margin-right: 10px;
+}
+
+/* Estilos para el mensaje de error y éxito */
+.formulario__mensaje,
+.formulario__grupo-btn-enviar {
+    grid-column: span 2;
+}
+
+.formulario__mensaje {
+    height: 45px;
+    line-height: 45px;
+    background: #F66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+}
+
+.formulario__mensaje-activo {
+    display: block;
+}
+
+.formulario__mensaje p {
+    margin: 0;
+}
+
+.formulario__grupo-btn-enviar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario__btn {
+    height: 45px;
+    line-height: 45px;
+    width: 30%;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.formulario__btn:hover {
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+}
+
+.formulario__mensaje-exito {
+    font-size: 14px;
+    color: #119200;
+    display: none;
+}
+
+.formulario__mensaje-exito-activo {
+    display: block;
+}
+
+/* Estilos para la validación */
+.formulario__grupo-correcto .formulario__validacion-estado {
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+    color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: #bb2929;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+    border: 3px solid #bb2929;
+}
+

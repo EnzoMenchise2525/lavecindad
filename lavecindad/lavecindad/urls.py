@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('',views.primero), 
-    path('iniciar_secion/',views.secion), 
+    path('bienvenida/',views.bienvenida, name="bienvenida"), 
+  
 ]

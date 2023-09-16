@@ -4,7 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 
 def primero(request):
-    return render(request,"home.html")
-
-def secion(request):
     return render(request,"iniciar_secion.html")
+
+def bienvenida(request):
+    return render(request,"bienvenida.html")
+
