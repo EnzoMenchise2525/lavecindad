@@ -218,3 +218,40 @@ body {
     }
 
 }
+
+/* --------------------------------------------- */
+/* ---------------- estilo de los 2 botones ------------ */
+/* --------------------------------------------- */
+
+/* CSS for the circular buttons */
+.circle-button {
+    border: none;
+    box-shadow: none;
+    padding: 0; /* Remove any internal padding */
+    background-color: transparent; /* Remove background color */
+    position: relative; /* Enable relative positioning for child elements */
+}
+
+/* CSS for centering the circular buttons horizontally */
+.circle-container {
+    text-align: center; /* Center the buttons horizontally */
+}
+
+/* CSS for displaying the circular buttons inline (side by side) */
+.circle {
+    display: inline-block;
+    margin: 0 10px; /* Add spacing between the buttons */
+    position: relative; /* Enable relative positioning for child elements */
+}
+
+/* CSS to style the text on the circular buttons */
+.button-text {
+    position: absolute;
+    top: 50%; /* Vertically center the text */
+    left: 50%; /* Horizontally center the text */
+    transform: translate(-50%, -50%); /* Center the text precisely */
+    color: white; /* Text color */
+    font-size: 24px; /* Font size */
+    font-weight: bold; /* Font weight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow (optional) */
+}

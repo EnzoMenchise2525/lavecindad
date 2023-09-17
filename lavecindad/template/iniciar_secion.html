@@ -22,74 +22,81 @@
 
     <!-- primer container de bienvenida -->
 
-    <div class="container-form register">
-        <div class="information">
-            <div class="info-childs">
-                <h2>Bienvenido</h2>
-                <p>Para unirte a nuestra comunidad, puedes crear una cuenta con tus datos.</p>
-                <input type="button" value="Iniciar Secion" id="sign-in">
-            </div>
-        </div>
-
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2> Iniciar Sesión </h2>
-                <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-facebook'></i>
-                    <i class='bx bx-envelope'></i>
-                </div>
-
-                <form class="formu">
-                    <label>
-                        <i class='bx bx-user'></i>
-                        <input type="text" placeholder="Nombre Usuario">
-                    </label>
-
-                    <label>
-                        <i class='bx bx-lock-alt'></i>
-                        <input type="password" placeholder="Contraseña">
-                    </label>
-                    <input type="submit" value="Iniciar Sesión">
-                    
-                </form>
-
-            </div>
+  <!-- primer container de bienvenida -->
+<div class="container-form register">
+    <div class="information">
+        <div class="info-childs">
+            <h2>Bienvenido</h2>
+            <p>Para unirte a nuestra comunidad, puedes crear una cuenta con tus datos.</p>
+            <input type="button" value="Iniciar Sesión" id="sign-in">
         </div>
     </div>
 
-    <!-- segundo container para el Registro -->
-
-    <div class="container-form login hide">
-        <div class="information">
-            <div class="info-childs">
-                <h2>Bienvenido 2 parte</h2>
-                <p>Para unirte a nuestra comunidad, puedes crear una cuenta con tus datos.</p>
-                <input type="button" value="Registrarse" id="sign-up">
+    <div class="form-information">
+        <div class="form-information-childs">
+            <h2> Iniciar Sesión </h2>
+            <div class="icons">
+                <i class='bx bxl-google'></i>
+                <i class='bx bxl-facebook'></i>
+                <i class='bx bx-envelope'></i>
             </div>
-        </div>
 
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2> Registrarse </h2>
+            <form class="formu">
+                <label>
+                    <i class='bx bx-user'></i>
+                    <input type="text" placeholder="Nombre Usuario">
+                </label>
 
-                <form class="formu">
-                    <label>
-                        <i class='bx bx-user'></i>
-                        <input type="text" placeholder="Nombre Usuario">
-                    </label>
+                <label>
+                    <i class='bx bx-lock-alt'></i>
+                    <input type="password" placeholder="Contraseña">
+                </label>
+                <input type="submit" value="Iniciar Sesión">
+            </form>
 
-
-                    <label>
-                        <i class='bx bx-lock-alt'></i>
-                        <input type="password" placeholder="Contraseña">
-                    </label>
-                    <input type="submit" value="iniciar">
-                </form>
-
-            </div>
         </div>
     </div>
+</div>
+
+
+<!-- segundo container para el Registro -->
+<div class="container-form login hide">
+    <div class="information">
+        <div class="info-childs">
+            <h2>¿Nuevo Usuario?</h2>
+            <p>Para iniciarte con nosotros, dinos que tipo de Colaborador.</p>
+            <input type="button" value="volver" id="sign-up">
+        </div>
+    </div>
+
+    <div class="form-information">
+        <div class="form-information-childs">
+            <h2> ¿Quien es Usted? </h2>
+            <br>
+
+            <div class="circle">
+                <!-- Container for the first circular button -->
+                <button class="circle-button">
+                    <div class="circle-content">
+                        <img src="{% static 'img/vecino.png' %}" alt="Imagen 1" class="circle-image" style="width: 200px; height: 200px;">
+                        <p class="button-text">Vecino</p>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="circle">
+                <!-- Container for the second circular button -->
+                <button class="circle-button">
+                    <div class="circle-content">
+                        <img src="{% static 'img/presidente.png' %}" alt="Imagen 2" class="circle-image" style="width: 200px; height: 200px;">
+                        <p class="button-text">Presidente</p>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
     <script src="{% static 'js/iniciar_secion.js' %}"></script>
 
