@@ -1,0 +1,227 @@
+[
+    {
+        "id-Sede": "987654001",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Rapa Nui",
+        "Nombre": "Rapa6 Nui",
+        "Dirección": "Piso 2 del Edificio Rapa Nui, calle Prat N° 856",
+        "Telefono": "56967362737",
+        "Unidad Vecinal": "205"
+    },
+    {
+        "id-Sede": "987654002",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Monja",
+        "Nombre": "RECREO Y RODRIGUEZ",
+        "Dirección": "C. Trece 221",
+        "Telefono": "492058",
+        "Unidad Vecinal": "8"
+    },
+    {
+        "id-Sede": "987654003",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Playa Ancha",
+        "Nombre": "Vecinos Empart",
+        "Dirección": "La Fontaine 230, 2",
+        "Telefono": "(32) 328 6747",
+        "Unidad Vecinal": "40"
+    },
+    {
+        "id-Sede": "987654004",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "San Felipe",
+        "Nombre": "Vecinos John Kennedy",
+        "Dirección": "La Fontaine 230",
+        "Telefono": "(32) 328 6747",
+        "Unidad Vecinal": "16"
+    },
+    {
+        "id-Sede": "987654005",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Miramar",
+        "Nombre": "Población Miramar y Pacifico Norte",
+        "Dirección": "Juan XXIII 560-618",
+        "Telefono": "9 8888 8510",
+        "Unidad Vecinal": "111"
+    },
+    {
+        "id-Sede": "987654006",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Placeres",
+        "Nombre": "Central Poniente",
+        "Dirección": "Malfati con Manuel Montt",
+        "Telefono": "NA",
+        "Unidad Vecinal": "49A"
+    },
+    {
+        "id-Sede": "987654007",
+        "Comuna": "Colchagua",
+        "Sector/Cerro": "Cerro Placilla",
+        "Nombre": "Aguas Buenas",
+        "Dirección": "El Reten con Septima",
+        "Telefono": "292891",
+        "Unidad Vecinal": "135"
+    },
+    {
+        "id-Sede": "987654008",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Rodelillo",
+        "Nombre": "La Planchada",
+        "Dirección": "La Plancada con Buin",
+        "Telefono": "2241009",
+        "Unidad Vecinal": "141"
+    },
+    {
+        "id-Sede": "987654009",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Plan",
+        "Nombre": "Almendral",
+        "Dirección": "Av. Brasil con 12 de Febrero",
+        "Telefono": "2758071 - 959824444",
+        "Unidad Vecinal": "128"
+    },
+    {
+        "id-Sede": "987654010",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro O'Higgins",
+        "Nombre": "Jorge Washington",
+        "Dirección": "AV.WASHINGTON 2229",
+        "Telefono": "240381",
+        "Unidad Vecinal": "122"
+    },
+    {
+        "id-Sede": "987654011",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Larraín",
+        "Nombre": "Avenida Argentina",
+        "Dirección": "Eusebio Lillo con San Jose",
+        "Telefono": "NA",
+        "Unidad Vecinal": "127"
+    },
+    {
+        "id-Sede": "987654012",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "San Roque",
+        "Nombre": "Poblacion La Isla",
+        "Dirección": "PJE CARRACA S/N SAN ROQUE ALTO",
+        "Telefono": "242843",
+        "Unidad Vecinal": "155"
+    },
+    {
+        "id-Sede": "987654013",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro O'Higgins",
+        "Nombre": "Jorge Washington",
+        "Dirección": "AV.WASHINGTON 2229",
+        "Telefono": "240381",
+        "Unidad Vecinal": "122"
+    },
+    {
+        "id-Sede": "987654014",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Santo Domingo",
+        "Nombre": "Cerro Santo Domingo",
+        "Dirección": "Camino Cintura",
+        "Telefono": "2215546",
+        "Unidad Vecinal": "34"
+    },
+    {
+        "id-Sede": "987654015",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Las Cañas",
+        "Nombre": "Alejandro Tinsley",
+        "Dirección": "José Ollino",
+        "Telefono": "2745911",
+        "Unidad Vecinal": "75"
+    },
+    {
+        "id-Sede": "987654016",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Polanco",
+        "Nombre": "Arturo Prat – Sudamericana",
+        "Dirección": "José Moreno, entre Fanor Velasco y Almirante Simpson",
+        "Telefono": "2340720",
+        "Unidad Vecinal": "83"
+    },
+    {
+        "id-Sede": "987654017",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Cordillera",
+        "Nombre": "Chaparro Y Cordillera Alto",
+        "Dirección": "Chaparro 197",
+        "Telefono": "2229539",
+        "Unidad Vecinal": "108"
+    },
+    {
+        "id-Sede": "987654018",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Yungay",
+        "Nombre": "Etchegaray",
+        "Dirección": "Etchegaray Con Rey Eduardo",
+        "Telefono": "NA",
+        "Unidad Vecinal": "26"
+    },
+    {
+        "id-Sede": "987654019",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Rocuant",
+        "Nombre": "San Jorge",
+        "Dirección": "Juan Antonio Rios, pasaje 10",
+        "Telefono": "378678",
+        "Unidad Vecinal": "10"
+    },
+    {
+        "id-Sede": "987654020",
+        "Comuna": "Viña del Mar",
+        "Sector/Cerro": "Cerro San Juan de Dios",
+        "Nombre": "Poblacion Lord Cochrane",
+        "Dirección": "CAMINO REAL 3240 22",
+        "Telefono": "(32) 2330470",
+        "Unidad Vecinal": "69"
+    },
+    {
+        "id-Sede": "987654021",
+        "Comuna": "Viña del Mar",
+        "Sector/Cerro": "Cerro Jimenez",
+        "Nombre": "Cerro Jimenez",
+        "Dirección": "Vista al Mar",
+        "Telefono": "22598763",
+        "Unidad Vecinal": "72"
+    },
+    {
+        "id-Sede": "987654022",
+        "Comuna": "Viña del Mar",
+        "Sector/Cerro": "Cerro Esperanza",
+        "Nombre": "Poblacion Chile",
+        "Dirección": "RODRIGO DE TRIANA LOTE 44",
+        "Telefono": "NA",
+        "Unidad Vecinal": "46"
+    },
+    {
+        "id-Sede": "987654023",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Mariposas",
+        "Nombre": "Almirante Latorre",
+        "Dirección": "Pedro de Oña entre Angol y Réne Lagos",
+        "Telefono": "NA",
+        "Unidad Vecinal": "66"
+    },
+    {
+        "id-Sede": "987654024",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Ramaditas",
+        "Nombre": "Ramaditas Parte Baja",
+        "Dirección": "Ramitas",
+        "Telefono": "377156",
+        "Unidad Vecinal": "95"
+    },
+    {
+        "id-Sede": "987654025",
+        "Comuna": "Valparaíso",
+        "Sector/Cerro": "Cerro Merced",
+        "Nombre": "Cerro Pajonal",
+        "Dirección": "Pajonal",
+        "Telefono": "NA",
+        "Unidad Vecinal": "14"
+    }
+]

@@ -1,0 +1,32 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="display-4 text-center">Editar Usuario</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+              </div>
+              <div class="form-group">
+                <label for="{{ form.direccion.id_for_label }}">Dirección</label>
+                {{ form.direccion }}
+              </div>
+              <div class="form-group">
+                <label for="{{ form.telefono.id_for_label }}">Teléfono</label>
+                {{ form.telefono }}
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Guardar Cambios</button>
+            </form>
+          </div>
+        </div>
+        <a href="{% url 'usuarios_junta' %}" class="btn btn-secondary btn-block mt-3">Volver a la lista de usuarios</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

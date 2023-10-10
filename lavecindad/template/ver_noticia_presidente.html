@@ -1,0 +1,28 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if junta_id %}
+        <a href="{% url 'noticias_junta_presidente' %}" class="btn btn-secondary mb-3">Volver a la lista de noticias</a>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">{{ noticia.titulo }}</h1>
+                </div>
+                <div class="card-body">
+                    {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3">
+                    {% endif %}
+                    <p class="card-text">{{ noticia.contenido }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    Fecha de publicación: {{ noticia.fecha_publicacion }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

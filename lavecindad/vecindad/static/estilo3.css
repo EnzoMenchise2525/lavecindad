@@ -1,0 +1,380 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --------------------------------------------- */
+/* -----------------iniciar sesion-------------- */
+/* --------------------------------------------- */
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+    background-image: url(img/Barrio_iniciar\ secion.jpg);
+    background-size: cover;
+}
+
+/* -----------------lado de Bienvenida-------------- */
+#registro-form {
+    /* Estilos personalizados para el formulario con el id "registro-form" */
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+.container-form {
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5); 
+    height: 700px;
+    width: 1100px;
+    transition: all 1s ease;
+    margin: 10px;
+    border: 1px solid red; 
+}
+
+.information {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #c7eef3;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; 
+}
+
+.info-childs {
+    width: 100%;
+    padding: 0 30px;
+}
+
+.info-childs h2 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.info-childs p {
+    margin: 15px 0;
+    color: #555; 
+}
+
+.info-childs input {
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #9191bd; 
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #9191bd;
+    cursor: pointer;
+    transition: background-color 2s ease; 
+}
+
+.info-childs input:hover {
+    background-color: #9191bd; 
+    border: none;
+    color: #fff; 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5); 
+}
+
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+
+/* -----------------lado de Crear Cuenta-------------- */
+
+
+.form-information {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 60%;
+    text-align: center;
+    background-color: #f8f8f8; 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-information-childs {
+    padding: 8px 30px; 
+}
+
+.form-information-childs h2 {
+    color: #333; 
+    font-size: 2rem;
+}
+
+.form-information-childs p {
+    color: #555;
+}
+
+.icons {
+    margin: 15px 0;
+}
+
+.icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd; 
+    border: 1px solid #9191bd; 
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5); 
+}
+
+.icons i:hover {
+    background-color: #c7c7f3;
+    color: #fff; 
+}
+
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+
+/* -----------------lado de Crear Cuenta (Formulario)-------------- */
+
+
+.formu {
+    margin-top: 30px;
+}
+
+.formu label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff; 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5); 
+}
+
+.formu label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff; 
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+.formu label i {
+    color: #a7a7a7; 
+}
+
+/* -----------------lado de Crear Cuenta (Formulario)-------------- */
+/* ----------------- bonon de Registrarse -------------- */
+
+.formu input[type="submit"] {
+    background-color: #9191bd;
+    color: #fff; 
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5); 
+}
+
+.formu input[type="submit"]:hover {
+    background-color: #7a7a9a;
+}
+
+/* ---------------- efecto desaparecer ------------ */
+.hide {
+    position: absolute;
+    transform: translateY(-300px);
+}
+
+
+/* Estilo para los mensajes de ayuda (help_texts) */
+.form-group ul.errorlist  {
+    color: red; /* Cambia el color del texto a rojo */
+    font-size: 14px; /* Cambia el tamaño de fuente si es necesario */
+    /* Agrega otros estilos si lo deseas */
+}
+
+
+/* --------------------------------------------- */
+/* ---------------- RESPONSIVE FORMU ------------ */
+/* --------------------------------------------- */
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    html {
+        font-size: 10px;
+    }
+
+    .container-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar elementos horizontalmente */
+    }
+
+    .information {
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0;
+    }
+
+    .form-information {
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    /* Asegura que los elementos en el formulario se ajusten al ancho de la pantalla */
+    label {
+        width: 100%;
+        max-width: 300px; /* Establece un ancho máximo para los elementos */
+        margin: 10px 0; /* Agrega espaciado vertical entre los elementos */
+    }
+
+    /* Asegura que los botones también se ajusten al ancho de la pantalla */
+    input[type="submit"] {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Aquí va tu CSS actual, sin cambios */
+
+/* Estilo para los label del formulario */
+
+/* Estilos para el formulario */
+.form {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form label {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.form label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+.form label i {
+    color: #a7a7a7;
+}
+
+/* Estilos para el botón de registro */
+.form input[type="submit"] {
+    background-color: #9191bd;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+/* Estilos para los enlaces */
+.form a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Estilo para el campo de selección personalizado */
+.custom-select {
+    background-color: #fff; /* Fondo blanco */
+    border: none; /* Sin borde */
+    outline: none; /* Sin borde de enfoque */
+    color: #333; /* Color de texto igual que otros campos */
+    padding: 10px; /* Espaciado interior */
+    width: 100%; /* Ancho completo */
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+
+.select-field {
+    color: #757575; /* Cambia este valor al color deseado (por ejemplo, #333) */
+}
+
+
+
+
+/* Estilos personalizados para el perfil de usuario */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger {
+    background-color: #ff5252;
+    border-color: #ff5252;
+}
+
+.btn-danger:hover {
+    background-color: #ff1a1a;
+    border-color: #ff1a1a;
+}
+
+.transparent-select {
+    background-color: transparent;
+    border: none;
+    color: #757575; /* Cambia el color del texto según tus preferencias */
+    margin-right: 10px; /* Ajusta este valor según sea necesario para acercar la flecha */
+    max-width: 250px
+}
+.transparent-select:focus {
+    outline: none; /* Elimina el contorno al hacer clic en el campo */
+    box-shadow: none; /* Elimina cualquier sombra al hacer clic en el campo */
+}
+
+
+/* Elimina la propiedad 'text-align: center' de la clase 'messages' */
+
+.error-message {
+    color: #ff0000;
+    font-size: 13px;
+    /* Otros estilos que desees aplicar */
+    text-align: left; /* Añade esta línea para alinear a la izquierda */
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #2ecc71 !important; /* Color verde para el texto de éxito */
+    background-color: #e9f7ef; /* Color de fondo para el mensaje de éxito */
+    border: 1px solid #2ecc71; /* Borde verde para el mensaje */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espacio entre mensajes */
+    border-radius: 5px; /* Bordes redondeados */
+}

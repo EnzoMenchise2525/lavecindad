@@ -1,0 +1,164 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+<h1>Mensajes Recibidos</h1>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped custom-table">
+        <thead class="thead-dark">
+            <tr>
+                <th class="custom-th">De</th>
+                <th class="custom-th">Fecha de Envío</th>
+                <th class="custom-th">Contenido</th>
+                <th class="custom-th">Solicitud de Espacios</th>
+                <th class="custom-th">Responder</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if mensajes_recibidos %}
+                {% for mensaje in mensajes_recibidos %}
+                    <tr>
+                        <td>{{ mensaje.emisor.username }}</td>
+                        <td>{{ mensaje.fecha_envio }}</td>
+                        <td>{{ mensaje.contenido }}</td>
+                        <td>{{ mensaje.solicitud_espacios }}</td>
+                        <td>
+                          <button class="btn btn-primary btn-correo" data-toggle="modal" data-target="#responderModal" data-remitente="{{ mensaje.emisor.email }}" data-mensaje="{{ mensaje.contenido }}">Enviar Correo</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">No tienes mensajes recibidos.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal para responder mensajes -->
+<div class="modal fade" id="responderModal" tabindex="-1" role="dialog" aria-labelledby="responderModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responderModalLabel">Responder Mensaje</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de respuesta de mensaje -->
+                
+                <form id="mensajeForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="mensaje-original">Mensaje Original:</label>
+                      <textarea id="mensaje-original" name="mensaje_original" class="form-control" rows="4" disabled></textarea>
+                  </div>
+                    {{ form.as_p }}  <!-- Renderiza el formulario con sus campos -->
+
+
+                     <!-- Agrega un campo oculto para el correo del remitente -->
+                    <input type="hidden" name="remitente" value="{{ request.user.email }}">
+
+                    <button type="submit" class="btn btn-primary">Enviar Respuesta</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script JavaScript para enviar la respuesta del mensaje como JSON -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mensajeForm = document.getElementById('mensajeForm');
+
+        mensajeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(mensajeForm);
+
+            fetch('/mensajes_recibidos_presidente/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'), // Obtén el token CSRF
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Respuesta enviada con éxito.');
+                    // Cierra el modal después de enviar la respuesta
+                    $('#responderModal').modal('hide');
+                } else {
+                    alert('Error al enviar la respuesta.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al enviar la respuesta.');
+            });
+        });
+    });
+
+function getCookie(name) {
+var cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        // Busca el nombre del token CSRF
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+}
+return cookieValue;
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.btn-correo');  // Selecciona todos los botones "Enviar Correo"
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const mensajeOriginal = this.getAttribute('data-mensaje');  // Obtiene el valor del atributo data-mensaje
+
+                // Establece el valor del mensaje original en el campo "mensaje-original"
+                const mensajeOriginalField = document.getElementById('mensaje-original');
+                mensajeOriginalField.value = mensajeOriginal;
+            });
+        });
+    });
+</script>
+
+<style>
+    /* Estilos personalizados */
+    .custom-table {
+        width: 100%;
+    }
+
+    .custom-th,
+    .custom-td {
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .custom-th {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .custom-tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+
+{% endblock %}

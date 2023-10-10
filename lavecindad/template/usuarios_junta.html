@@ -1,0 +1,83 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="display-4 mb-4">Usuarios de tu Junta de Vecinos</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nombre de Usuario</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usuario in usuarios_junta %}
+            <tr>
+              <td>{{ usuario.username }}</td>
+              <td>{{ usuario.first_name }} {{ usuario.last_name }}</td>
+              <td>{{ usuario.direccion }}</td>
+              <td>{{ usuario.telefono }}</td>
+              <td>
+                <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-info btn-sm">Editar</a>
+                <a href="#" class="btn btn-danger btn-sm eliminar-usuario" data-usuario-id="{{ usuario.id }}">Eliminar</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5" class="text-center">No hay usuarios en esta junta de vecinos</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Ventana modal para confirmar eliminación -->
+  <div class="modal fade" id="eliminarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="eliminarUsuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eliminarUsuarioModalLabel">Confirmar eliminación de cuenta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas eliminar esta cuenta? Esta acción es irreversible y eliminará permanentemente la cuenta del usuario.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <a href="#" id="confirmarEliminarCuentaBtn" class="btn btn-danger">Eliminar Cuenta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript para procesar la eliminación y mostrar la ventana modal -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Al hacer clic en un enlace de eliminación
+      $('.eliminar-usuario').click(function(e) {
+        e.preventDefault();
+        var usuarioId = $(this).data('usuario-id');
+
+        // Configurar el enlace en la ventana modal para redirigir después de la eliminación
+        $('#confirmarEliminarCuentaBtn').attr('href', `{% url 'eliminar_cuenta_presidente' 0 %}`.replace('0', usuarioId));
+
+        // Mostrar la ventana modal de confirmación
+        $('#eliminarUsuarioModal').modal('show');
+      });
+    });
+  </script>
+  {% if request.GET.eliminacion_exitosa == 'true' %}
+    <div class="alert alert-success mt-3">
+      La cuenta ha sido eliminada exitosamente.
+    </div>
+  {% endif %}
+{% endblock %}

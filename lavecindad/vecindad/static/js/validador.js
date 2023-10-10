@@ -6,38 +6,41 @@ const formulario = document.getElementById('formulario');  /*acceso al id=formul
 const inputs = document.querySelectorAll('#formulario input'); /*optiene todos los arreglos de los input*/
 
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, /* Letras y espacios, pueden llevar acentos.*/
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	asunto: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, /* Letras y espacios, pueden llevar acentos.*/
-    mensaje: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, /* Letras y espacios, pueden llevar acentos.*/
-
-}
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    telefono: /^\d{7,14}$/, // 7 a 14 números
+    asunto: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	mensaje: /^[a-zA-ZÀ-ÿ\s]{0,100}$/, // 
+};
 
 
 const campos = {
 	nombre: false,
 	correo: false,
+	telefono: false,
 	asunto: false,
     mensaje: false,
 }
 
 
 const validarFormulario = (e) => {
-	switch (e.target.name) {
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
+    switch (e.target.name) {
+        case "nombre":
+            validarCampo(expresiones.nombre, e.target, 'nombre');
+            break;
         case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
+            validarCampo(expresiones.correo, e.target, 'correo');
+            break;
+        case "telefono":
+            validarCampo(expresiones.telefono, e.target, 'telefono');
+            break;
         case "asunto":
-			validarCampo(expresiones.asunto, e.target, 'asunto');
-		break;
+            validarCampo(expresiones.asunto, e.target, 'asunto');
+            break;
         case "mensaje":
-			validarCampo(expresiones.mensaje, e.target, 'mensaje');
-		break;  
-        
-	}
+            validarCampo(expresiones.mensaje, e.target, 'mensaje');
+            break;
+    }
 }
 
 const validarCampo = (expresion, input, campo) => {
@@ -69,7 +72,7 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 
-	if(campos.nombre && campos.correo && campos.asunto && campos.mensaje ){
+	if(campos.nombre && campos.correo && campos.telefono && campos.asunto && campos.mensaje ){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
@@ -84,3 +87,4 @@ formulario.addEventListener('submit', (e) => {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+

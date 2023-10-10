@@ -1,0 +1,92 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+<div class="container">
+    {% if junta_de_vecinos %}
+    <div class="jumbotron mt-3 custom-jumbotron">
+        <h1 class="display-4">Noticias de la Junta de Vecinos: {{ junta_de_vecinos.nombre }}</h1>
+        <p class="lead">Comuna: {{ junta_de_vecinos.comuna }}</p>
+        <hr class="my-4">
+    </div>
+    {% endif %}
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <!-- Carrusel de noticias a la izquierda en dispositivos medianos y grandes -->
+        <div class="col-md-6">
+            {% if noticias %}
+            <div id="noticiasCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Controles del carrusel -->
+                <a class="carousel-control-prev" href="#noticiasCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#noticiasCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+                <div class="carousel-inner">
+                    {% for noticia in noticias %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {% if noticia.imagen %}
+                        <a href="{% url 'ver_noticia_presidente' noticia.id %}">
+                            <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3 mx-auto d-block">
+                        </a>
+                        {% endif %}
+                        <h3>{{ noticia.titulo }}</h3>
+                        <a href="{% url 'ver_noticia_presidente' noticia.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <h1>No hay noticias disponibles en tu junta de vecinos.</h1>
+            {% endif %}
+        </div>
+
+        <!-- Primeras dos noticias a la derecha en dispositivos medianos y grandes -->
+        <div class="col-md-6">
+            {% if noticias %}
+            <h2 class="mt-4">Noticias de tu Junta de Vecinos</h2>
+            <div class="row mt-3">
+                {% for noticia in noticias|slice:"0:2" %}
+                <div class="col-md-6">
+                    <div class="card mb-4 noticia-item">
+                        {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="card-img-top">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ noticia.titulo }}</h5>
+                            <p class="card-text small">{{ noticia.contenido|truncatechars:150 }}</p>
+                            <a href="{% url 'ver_noticia_presidente' noticia.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Noticias restantes debajo del carrusel en dispositivos medianos y grandes -->
+        <div class="col-md-12">
+            <div class="row">
+                {% for noticia in noticias|slice:"2:" %}
+                <div class="col-md-4"> <!-- Cambiamos de 3 a 4 para mostrar 3 noticias en una fila -->
+                    <div class="card mb-4 noticia-item">
+                        {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="card-img-top">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ noticia.titulo }}</h5>
+                            <p class="card-text small">{{ noticia.contenido|truncatechars:150 }}</p>
+                            <a href="{% url 'ver_noticia_presidente' noticia.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

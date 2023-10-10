@@ -1,0 +1,363 @@
+/* Estilo para la barra de navegación */
+.navbar {
+  background-color: #333 !important; /* Cambia el color de fondo de la barra de navegación */
+  padding: 10px 0;
+}
+
+/* Estilo para el logotipo y el texto del enlace */
+.navbar-brand {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img.logo-img {
+  max-width: 150px; /* Establece un ancho máximo para el logotipo */
+  margin-right: 10px;
+}
+
+.navbar-brand a {
+  color: #f8b400 !important; /* Cambia el color del texto del logotipo */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s; /* Transición suave para el color del texto */
+}
+
+.navbar-brand a:hover {
+  color: #ffcc29 !important; /* Cambia el color del texto al pasar el mouse sobre él */
+}
+
+/* Estilo para los íconos y los enlaces del menú */
+.navbar-nav .nav-link {
+  font-size: 18px;
+  color: #fff !important; /* Cambia el color del texto de los enlaces */
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8b400 !important; /* Cambia el color del texto del enlace al pasar el mouse sobre él */
+}
+
+/* Estilo para el botón de menú responsive en dispositivos móviles */
+.navbar-toggler-icon {
+  color: #fff;
+  font-size: 24px;
+}
+
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  color: #f8b400;
+}
+
+/* Estilo para el menú desplegable en dispositivos móviles */
+
+.navbar-nav {
+  margin-top: 20px;
+}
+
+.navbar-collapse .nav-link {
+  margin: 10px 0;
+  font-size: 17px;
+  color: #fff !important; /* Cambia el color del texto del menú desplegable */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-collapse .nav-link:hover {
+  color: #f8b400 !important; /* Cambia el color del texto del enlace al pasar el mouse sobre él */
+}
+
+
+
+/* Estilos para la página de perfil */
+#perfil-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#perfil-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#perfil-data {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#perfil-data ul {
+    list-style: none;
+    padding: 0;
+}
+
+#perfil-data li {
+    margin-bottom: 10px;
+}
+
+/* perfil.css */
+.logo-img {
+    width: 100px; /* Ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Agrega más estilos personalizados aquí */
+
+/* Estilos para el botón de eliminar cuenta */
+#eliminarCuentaBtn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#eliminarCuentaBtn:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para el modal */
+.modal-content {
+    border-radius: 10px;
+}
+
+/* Cambiar el color de las flechas del carrusel a negro */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+}
+
+/* Cambiar el color de las flechas activas al pasar el mouse a negro */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #000;
+}
+
+.noticia-item {
+    max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+}
+
+/* Estilos para la tabla */
+.table-container {
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Estilos para las filas alternas */
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para la fila de encabezado */
+  .table thead tr {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* styles.css */
+
+  .success-message {
+    color: #008000; /* Color verde para el mensaje de éxito */
+    font-weight: bold; /* Texto en negrita */
+    margin-bottom: 20px; /* Espacio inferior para separar del formulario */
+  }
+  
+  .message-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .message-form {
+    margin-bottom: 20px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para el mensaje de error */
+.error-message {
+    margin-top: 20px; /* Espacio superior para separar el mensaje de error del formulario */
+  }
+  
+  /* Estilo para los mensajes de error dentro del mensaje de error */
+  .error-message .alert {
+    background-color: #f8d7da; /* Color de fondo para mensajes de error */
+    color: #721c24; /* Color del texto de mensajes de error */
+    border: 1px solid #f5c6cb; /* Borde para mensajes de error */
+    padding: 10px; /* Espaciado interno para mensajes de error */
+    border-radius: 4px; /* Borde redondeado para mensajes de error */
+  }
+  
+  /* Estilo para el botón de enviar */
+  .submit-button {
+    background-color: #007bff; /* Color de fondo del botón de enviar */
+    color: #fff; /* Color del texto del botón de enviar */
+    border: none; /* Sin borde en el botón de enviar */
+    padding: 10px 20px; /* Espaciado interno en el botón de enviar */
+    border-radius: 4px; /* Borde redondeado en el botón de enviar */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón de enviar */
+  }
+  
+  /* Estilo para el botón de enviar al pasar el cursor */
+  .submit-button:hover {
+    background-color: #0056b3; /* Cambio de color de fondo al pasar el cursor */
+  }
+  
+  /* Estilo para el contenedor del formulario */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para los campos del formulario */
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Estilo para los elementos de entrada del formulario */
+  input[type="text"],
+  input[type="file"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para el botón de enviar */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo personalizado para el jumbotron */
+/* Estilo para el Jumbotron */
+.custom-jumbotron {
+  background-color: #f8b400; /* Cambia el color de fondo */
+  padding: 30px; /* Ajusta el espacio interno */
+  border-radius: 10px; /* Agrega bordes redondeados */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
+  text-align: center; /* Centra el contenido */
+  color: #fff; /* Cambia el color del texto */
+}
+
+.custom-jumbotron h1 {
+  font-size: 36px; /* Cambia el tamaño del título */
+}
+
+.custom-jumbotron p {
+  font-size: 18px; /* Cambia el tamaño del texto */
+}
+
+.custom-jumbotron hr {
+  border-color: #fff; /* Cambia el color de la línea horizontal */
+}
+
+
+.container-fluid {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* Estilo para el carrusel */
+#noticiasCarousel {
+  margin-right: 30px;
+}
+
+/* Estilo para las noticias */
+.noticia-item {
+  margin-bottom: 20px;
+}
+
+/* Estilo para el botón "Leer más" personalizado */
+.custom-btn {
+  background-color: #f8b400; /* Cambia el color de fondo del botón */
+  border-color: #f8b400; /* Cambia el color del borde del botón */
+  color: #fff; /* Cambia el color del texto del botón */
+}
+
+.custom-btn:hover {
+  background-color: #ffcc29; /* Cambia el color de fondo del botón al pasar el mouse sobre él */
+  border-color: #ffcc29; /* Cambia el color del borde del botón al pasar el mouse sobre él */
+}
+
+.custom-heading {
+  font-size: 32px; /* Cambia el tamaño de fuente a tu gusto */
+  font-weight: bold; /* Opcional: Cambia el peso de la fuente */
+  color: #FF5733; /* Cambia el color del texto */
+  text-transform: uppercase; /* Convierte el texto en mayúsculas */
+  margin-bottom: 20px; /* Agrega espacio inferior */
+  border-bottom: 2px solid #FF5733; /* Agrega una línea inferior */
+  padding-bottom: 5px; /* Espacio adicional debajo de la línea inferior */
+  /* Agrega cualquier otro estilo personalizado que desees */
+}
+
