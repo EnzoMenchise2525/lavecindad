@@ -1,6 +1,8 @@
 from django.http import HttpResponseForbidden
 from functools import wraps
 
+from django.shortcuts import redirect
+
 def usuario_presidente_required(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
@@ -19,3 +21,19 @@ def usuario_residente_required(view_func):
         else:
             return HttpResponseForbidden("No tienes permiso para acceder a esta página.")
     return _wrapped_view
+
+
+
+from django.shortcuts import redirect
+from functools import wraps
+
+def anonymous_required(view_func):
+    @wraps(view_func)
+    def check_anonymous(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            if (hasattr(request.user, 'id_sede') and request.user.id_sede is not None and request.user.id_sede != ""):
+                return redirect('noticias_junta_presidente')
+            else:
+                return redirect('noticias_junta')
+        return view_func(request, *args, **kwargs)
+    return check_anonymous

@@ -2,7 +2,7 @@ import json
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from vecindad.decorators import usuario_presidente_required, usuario_residente_required
+from vecindad.decorators import anonymous_required, usuario_presidente_required, usuario_residente_required
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
@@ -30,11 +30,7 @@ def descargar_pdf(request):
         return HttpResponse('El archivo PDF no se encontró.', status=404)
 
 
-
-
-def bienvenida(request):
-    return render(request,"bienvenida.html")
-
+@anonymous_required
 def registro(request):
     
     if request.method == 'POST':
@@ -69,7 +65,7 @@ def registro(request):
 
     return render(request, 'registro.html', {'form': form})
 
-
+@anonymous_required
 def registro_presidente(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
@@ -119,8 +115,7 @@ def registro_presidente(request):
     return render(request, 'registro_presidente.html', {'form': form})
 
 
-
-
+@anonymous_required
 def sesion(request):
     if 'registro_exitoso' in request.GET:
         messages.success(request, 'Registro exitoso. Ahora puedes iniciar sesión.')
