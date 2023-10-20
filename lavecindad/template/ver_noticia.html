@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if junta_id %}
+        <a href="{% url 'noticias_junta' %}" class="btn btn-secondary mb-3">Volver a la lista de noticias</a>
+    {% endif %}
+
+    <div class="card" style="margin-bottom: 20px;">
+        <div class="card-header">
+            <h1 class="card-title">{{ noticia.titulo }}</h1>
+        </div>
+        <div class="card-body">
+            {% if noticia.imagen %}
+                <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3">
+            {% endif %}
+            <p class="card-text">{{ noticia.contenido }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Fecha de publicación: {{ noticia.fecha_publicacion }}
+        </div>
+    </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = '{{ PAGE_URL|safe }}';  // Usamos la variable PAGE_URL
+        this.page.identifier = '{{ PAGE_IDENTIFIER|safe }}';  // Usamos la variable PAGE_IDENTIFIER
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-127-0-0-1-8000-rmqm8wjuko.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+{% endblock %}

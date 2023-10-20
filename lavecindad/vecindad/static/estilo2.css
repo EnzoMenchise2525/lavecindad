@@ -143,12 +143,44 @@ footer {
     align-items: center;
 }
 
+/* Estilos para el formulario */
 #container {
-    width: 100%; /* Ancho del formulario al 100% para ocupar todo el ancho disponible */
+    width: 50%; /* Ancho del formulario al 50% para alinear a la derecha */
     padding: 30px;
     background-color: #42EB42;
     text-align: left;
 }
+
+/* Estilos para el formulario */
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: flex-start; /* Alinea los elementos al principio verticalmente */
+    width: 100%;
+    background: #42EB42;
+    padding: 2em;
+    transition: 0.5s;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Estilos para los labels */
+.formulario__label {
+    font-weight: 700;
+    text-align: left; /* Alinea el texto del label a la izquierda */
+    width: 100%; /* Asegura que los labels ocupen todo el ancho disponible */
+}
+
+/* Estilos para el contenedor principal */
+#background-container {
+    background-color: #42EB42;
+    min-height: 50vh;
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    align-items: center;
+}
+
 
 #titulo-form {
     text-align: left;
@@ -158,6 +190,7 @@ footer {
     margin: 0;
     padding: 30px;
 }
+
 
 /* Estilos para el formulario */
 #formulario-contacto {
@@ -207,43 +240,11 @@ input[type="submit"]:hover {
     background-color: #006400;
 }
 
-/* Estilos para el formulario */
-.formulario {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
-    background: #42EB42;
-    padding: 2em;
-    transition: 0.5s;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-/* Cambia la alineación de los labels a la derecha */
-.formulario__label {
-    font-weight: 700;
-    padding: 10px;
-    cursor: pointer;
-    text-align: right; /* Alinea el texto del label a la derecha */
-    width: 100%; /* Asegura que los labels ocupen todo el ancho disponible */
-}
 
 .formulario__grupo-input {
     position: relative;
 }
 
-.formulario__input {
-    width: 100%;
-    background-color: #f5ecec;
-    border: 3px solid transparent;
-    border-radius: 3px;
-    height: 3em;
-    line-height: 3em;
-    padding: 0.5em;
-    transition: .3s ease all;
-}
 
 .formulario__btn {
     width: 50%;
@@ -260,12 +261,16 @@ input[type="submit"]:hover {
 
 .container2 {
     align-items: center;
-    width: 100%;
+    width: 43em;
     background: lightgray;
     margin-bottom: 10em;
     border-radius: 1em;
     padding: 1em;
     transition: 0.5s;
+}
+
+.date {
+    background-color: #f5ececbd;
 }
 
 /* Estilos para los campos del formulario */
@@ -320,6 +325,8 @@ input[type="submit"]:hover {
     margin-right: 10px;
 }
 
+
+
 /* Estilos para el mensaje de error y éxito */
 .formulario__mensaje,
 .formulario__grupo-btn-enviar {
@@ -353,17 +360,13 @@ input[type="submit"]:hover {
     height: 45px;
     line-height: 45px;
     width: 30%;
-    background: #000;
+    background: #008000;
     color: #fff;
     font-weight: bold;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: .1s ease all;
-}
-
-.formulario__btn:hover {
-    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
 }
 
 .formulario__mensaje-exito {
@@ -393,5 +396,260 @@ input[type="submit"]:hover {
 
 .formulario__grupo-incorrecto .formulario__input {
     border: 3px solid #bb2929;
+}
+/* ----- -----  Mediaqueries ----- ----- */
+
+@media screen and (max-width: 800px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+    .formulario__mensaje,
+    .formulario__grupo-btn-enviar {
+        grid-column: 1;
+    }
+    .formulario__btn {
+        width: 100%;
+    }
+}
+
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------ agregar noticias --------------*/ 
+/* ----------------------------------------------------------- */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+#formulario_noti {
+    text-align: center;
+}
+
+/* Campos de entrada */
+#formulario_noti label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#formulario_noti input[type="file"],
+#formulario_noti input[type="text"],
+#formulario_noti textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botón para crear contenedor */
+#formulario_noti .crear-contenedor {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#formulario_noti .crear-contenedor:hover {
+    background-color: #030404;
+}
+
+/* Contenedor creado */
+.nuevo-contenedor {
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#formulario_noti .nuevo-contenedor h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000 !important; /* Cambia el color del título a negro */
+    text-align: center; /* Centra el texto del título */
+}
+
+#formulario_noti .nuevo-contenedor p {
+    color: #000 !important; /* Cambia el color del texto a negro */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/* Imagen del contenedor */
+.nuevo-contenedor img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* CSS para el contenedor de contenido */
+#contenedor-de-contenido {
+    white-space: nowrap; 
+    overflow-x: auto; 
+}
+
+#contenedor-de-contenido {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+}
+
+#contenedor-de-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+/* Estilo para los contenedores individuales */
+.nuevo-contenedor {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    width: 300px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden; 
+    white-space: normal; 
+}
+
+/* Estilo para las imágenes dentro de los contenedores */
+.nuevo-contenedor img {
+    max-width: 100%; 
+    height: auto;
+    display: block; 
+    margin: 0 auto; 
+}
+
+
+.contenedor-individual img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+
+.contenedor-individual {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    overflow: hidden;
+    margin-right: 10px;
+    transition: margin-right 0.5s; 
+}
+
+
+
+/* Estilo para los contenedores individuales después del primero */
+.contenedor-individual + .contenedor-individual {
+    margin-left: 10px; 
+}
+
+.nuevo-contenedor:first-child {
+    margin: 10px; 
+}
+
+/* Estilo para los contenedores individuales después del primero */
+.nuevo-contenedor + .nuevo-contenedor {
+    margin: 10px; 
+}
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------ Crear noticias --------------*/ 
+/* ----------------------------------------------------------- */
+
+
+/* Estilo para los grupos de formulario */
+.form-group2 {
+    margin-bottom: 20px;
+}
+
+.form-group2 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Estilo para los campos de entrada y select */
+.form-group2 input[type="text"],
+.form-group2 textarea,
+.form-group2 select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Estilo para el botón */
+.crear-contenedor {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.crear-contenedor:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el contenedor donde se mostrará el contenido agregado */
+#contenedor-de-contenido2 {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.noticia {
+    text-align: center; /* Centrar el contenido dentro de la noticia */
+    margin: 0 auto; /* Centrar la noticia horizontalmente */
+    max-width: 600px; /* Establecer un ancho máximo para la noticia */
+    padding: 20px; /* Espaciado interior para mejorar la apariencia */
+    border: 1px solid #ddd; /* Agregar un borde para resaltar la noticia */
+    border-radius: 5px; /* Añadir esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para resaltar */
+}
+
+.noticia img {
+    max-width: 100%; /* Asegurarse de que la imagen se ajuste al ancho de la noticia */
+    display: block; /* Evitar espacio adicional debajo de la imagen */
+    margin: 0 auto 10px; /* Centrar la imagen y agregar espacio inferior */
+}
+
+/* Botón para crear contenedor */
+#formulario_noti2 .Crear-Noticia {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#formulario_noti2 .Crear-Noticia:hover {
+    background-color: #030404;
 }
 

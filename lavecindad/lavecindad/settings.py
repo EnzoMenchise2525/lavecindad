@@ -119,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-cl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
@@ -133,6 +133,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -140,10 +141,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'vecindad.UsuarioPersonalizado'
 
-LOGIN_REDIRECT_URL = '/perfil/'  # Cambia '/perfil/' por la URL a la que deseas redirigir al usuario después del inicio de sesión
+
 
 LOGIN_URL = 'iniciar_sesion'  # Nombre de la URL de inicio de sesión
-LOGOUT_REDIRECT_URL = 'primero'  # Nombre de la URL a la que se redirige después de cerrar sesión
+LOGOUT_REDIRECT_URL = 'iniciar_sesion'  # Nombre de la URL a la que se redirige después de cerrar sesión
 
 MESSAGE_TAGS ={
 
@@ -154,3 +155,16 @@ MESSAGE_TAGS ={
     mensajes_de_error.ERROR: 'danger',
 
 }
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'juntadevecinoslavecindad@gmail.com'
+EMAIL_HOST_PASSWORD = 'siei fika czua bkdk'
+
+# Configuración de OAuth 2.0
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '800406312850-69gbig8funi11j4lbgenu1jdclvl06do.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

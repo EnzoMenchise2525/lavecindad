@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,17 +16,18 @@
     <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <title>FORMULARIO DE REGISTRO E INICIO SESIÓN</title>
+    <title>Iniciar Sesión</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'estiloss.css' %}">
 
 </head>
 <body>
+    
 
-    <!-- primer container de bienvenida -->
 
   <!-- primer container de bienvenida -->
 <div class="container-form register">
+    
     <div class="information">
         <div class="info-childs">
             <h2>Bienvenido</h2>
@@ -31,31 +35,55 @@
             <input type="button" value="Regístrate" id="sign-in">
         </div>
     </div>
+    
 
     <div class="form-information">
-        <div class="form-information-childs">
-            <h2> Iniciar Sesión </h2>
-            <div class="icons">
-                <i class='bx bxl-google'></i>
-                <i class='bx bxl-facebook'></i>
-                <i class='bx bx-envelope'></i>
-            </div>
 
-            <form class="formu">
+        
+        <div class="form-information-childs">
+
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for message in messages %}
+                    {% if message.tags != 'success' %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+            <h2> Iniciar Sesión </h2>
+                
+           
+            
+            <form method="post" class="formu">
+                {% csrf_token %}
                 <label>
                     <i class='bx bx-user'></i>
-                    <input type="text" placeholder="Nombre Usuario">
+                    <input type="text" name="username" placeholder="Nombre Usuario">
                 </label>
-
+            
                 <label>
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" placeholder="Contraseña">
+                    <input type="password" name="password" placeholder="Contraseña">
                 </label>
                 <input type="submit" value="Iniciar Sesión">
             </form>
+            
 
         </div>
+        
     </div>
+  
 </div>
 
 
@@ -65,7 +93,7 @@
         <div class="info-childs">
             <h2>¿Nuevo Usuario?</h2>
             <p>Para iniciarte con nosotros, dinos que tipo de Colaborador.</p>
-            <input type="button" value="volver" id="sign-up">
+            <input type="button" value="Volver" id="sign-up">
         </div>
     </div>
 
@@ -74,25 +102,26 @@
             <h2> ¿Quien es Usted? </h2>
             <br>
 
-          <a href="{% url 'registro' %}">  
             <div class="circle">
                 <!-- Container for the first circular button -->
                 <button class="circle-button">
                     <div class="circle-content">
+                    <a href="{% url 'registro' %}">
                         <img src="{% static 'img/vecino.png' %}" alt="Imagen 1" class="circle-image" style="width: 200px; height: 200px;">
+                    </a>
                         <p class="button-text">Vecino</p>
-                        
                     </div>
                 </button>
             </div>
-        </a>  
             
             <div class="circle">
                 <!-- Container for the second circular button -->
                 <button class="circle-button">
                     <div class="circle-content">
+                        <a href="{% url 'registro_presidente' %}">
                         <img src="{% static 'img/presidente.png' %}" alt="Imagen 2" class="circle-image" style="width: 200px; height: 200px;">
                         <p class="button-text">Presidente</p>
+                        </a>
                     </div>
                 </button>
             </div>

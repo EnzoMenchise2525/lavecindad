@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Eliminar Cuenta</h1>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">¿Estás seguro de que deseas eliminar tu cuenta?</h5>
+                    <p>Esta acción es irreversible y eliminará permanentemente tu cuenta.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Eliminar Cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

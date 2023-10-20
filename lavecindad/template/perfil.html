@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" id="perfil-container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 id="perfil-title" class="mb-4">Perfil de Usuario</h3>
+            <div id="perfil-data">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Usuario:</strong> {{ usuario.username }}</li>
+                    <li class="list-group-item"><strong>Nombre:</strong> {{ usuario.first_name }} {{ usuario.last_name }}</li>
+                    <li class="list-group-item"><strong>Correo Electrónico:</strong> {{ usuario.email }}</li>
+                    <li class="list-group-item"><strong>Dirección:</strong> {{ usuario.direccion }}</li>
+                    <li class="list-group-item"><strong>Teléfono:</strong> {{ usuario.telefono }}</li>
+                    <li class="list-group-item"><strong>Junta de Vecinos:</strong> {{ usuario.junta_de_vecinos }}</li>
+                </ul>
+            </div>
+            
+            <!-- Formulario de edición -->
+            <div class="mt-4">
+                <h4 class="mb-3">Editar Información</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <a href="{% url 'descargar_pdf' %}" class="btn btn-info">Descargar Certificado de Residencia</a>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-4">
+                <button type="button" class="btn btn-danger" id="eliminarCuentaBtn" data-toggle="modal" data-target="#eliminarCuentaModal">Eliminar Cuenta</button>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- Script JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script JavaScript para eliminar la cuenta -->
+<script>
+    $(document).ready(function() {
+        // Mostrar el diálogo modal al hacer clic en el botón "Eliminar Cuenta"
+        $('#eliminarCuentaBtn').click(function() {
+            $('#eliminarCuentaModal').modal('show');
+        });
+    
+        // Procesar la eliminación de la cuenta al hacer clic en "Confirmar"
+        $('#confirmarEliminarCuentaBtn').click(function() {
+            // Obtener el token CSRF del formulario
+            var csrfToken = $("input[name=csrfmiddlewaretoken]").val();
+    
+            $.ajax({
+                url: "{% url 'eliminar_cuenta' %}",
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken  // Agregar el token CSRF como encabezado
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Cerrar la sesión y redirigir al inicio de sesión si la eliminación fue exitosa
+                        window.location.href = "{% url 'logout' %}";
+                    } else {
+                        // Manejar errores si la eliminación no fue exitosa
+                        console.error("Error al eliminar la cuenta.");
+                    }
+                },
+                error: function() {
+                    // Manejar errores si la solicitud AJAX falla
+                    console.error("Error al procesar la solicitud AJAX.");
+                }
+            });
+        });
+    });
+    </script>
+    
+
+<!-- Diálogo modal para confirmar eliminación de cuenta -->
+<div class="modal fade" id="eliminarCuentaModal" tabindex="-1" role="dialog" aria-labelledby="eliminarCuentaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eliminarCuentaModalLabel">Confirmar eliminación de cuenta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible y eliminará permanentemente tu cuenta.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmarEliminarCuentaBtn">Eliminar Cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

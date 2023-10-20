@@ -255,3 +255,56 @@ body {
     font-weight: bold; /* Font weight */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow (optional) */
 }
+
+/* Estilo para el mensaje de error */
+.error-message {
+    margin-top: 20px; /* Espacio superior para separar el mensaje de error del formulario */
+  }
+  
+  /* Estilo para los mensajes de error dentro del mensaje de error */
+  .error-message .alert {
+    background-color: #f8d7da; /* Color de fondo para mensajes de error */
+    color: #721c24; /* Color del texto de mensajes de error */
+    border: 1px solid #f5c6cb; /* Borde para mensajes de error */
+    padding: 10px; /* Espaciado interno para mensajes de error */
+    border-radius: 4px; /* Borde redondeado para mensajes de error */
+  }
+  
+  /* Estilo para el botón de enviar */
+  .submit-button {
+    background-color: #007bff; /* Color de fondo del botón de enviar */
+    color: #fff; /* Color del texto del botón de enviar */
+    border: none; /* Sin borde en el botón de enviar */
+    padding: 10px 20px; /* Espaciado interno en el botón de enviar */
+    border-radius: 4px; /* Borde redondeado en el botón de enviar */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón de enviar */
+  }
+  
+  /* Estilo para el botón de enviar al pasar el cursor */
+  .submit-button:hover {
+    background-color: #0056b3; /* Cambio de color de fondo al pasar el cursor */
+  }
+  
+  /* Estilos para los mensajes de error */
+  .error-message {
+    
+    color: #ff0000;
+    margin-top: 10px;
+    font-size: 13px; /* Font size */
+
+
+}
+
+/* Estilos para mensajes de éxito en la nueva vista */
+.message-container .success-message {
+    color: green; /* Cambia el color del texto a verde */
+    background-color: lightgreen; /* Cambia el color de fondo a verde claro */
+    border: 1px solid darkgreen; /* Cambia el borde a verde oscuro */
+    padding: 10px; /* Añade espacio de relleno para que se vea mejor */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    font-weight: bold; /* Hace que el texto sea más visible */
+}
+
+
+
+

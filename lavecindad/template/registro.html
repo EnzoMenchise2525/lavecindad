@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,17 +16,17 @@
 
     <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <title>Registrate!</title>
+    
+    <title>Regístrate </title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilo3.css' %}">
 
 </head>
 
 <body>
-
-    <!-- primer container de bienvenida -->
-
+    
+    
+    <!-- Primer container de bienvenida -->
     <div class="container-form register">
         <div class="information">
             <div class="info-childs">
@@ -34,27 +37,104 @@
         </div>
 
         <div class="form-information">
-        
-
-
+           
             <div class="form-information-childs">
-                <h2> ¡Registrate a nuestra comunidad! </h2>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <h2>¡Regístrate en nuestra comunidad!</h2>
                 <form id="registro-form" class="form" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Registrar</button>
+                   
+                    
+                {% csrf_token %}
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="rut" placeholder="RUT">
+                    </label>
+
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="username" placeholder="Nombre de Usuario">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="first_name" placeholder="Nombre">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="last_name" placeholder="Apellido Paterno">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="last_name2" placeholder="Apellido Materno">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-mail-send'></i>
+                        <input type="email" name="email" placeholder="Correo Electrónico">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-phone'></i>
+                        <input type="tel" name="telefono" placeholder="Número de Teléfono">
+                    </label>
+                
+                    <label class="form-label">
+                        <i class='bx bx-user'></i>
+                        <select name="sexo" class="select-field transparent-select" style="border: none;">
+                            <option value="" disabled selected>Sexo</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-calendar'></i>
+                        <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento">
+                    </label>
+
+                    <label>
+                        <i class='bx bx-home'></i>
+                        <input type="text" name="direccion" placeholder="Dirección">
+                    </label>
+                
+                
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" name="password1" placeholder="Contraseña">
+                    </label>
+                
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" name="password2" placeholder="Confirmar Contraseña">
+                    </label>
+                
+                    
+                    <label class="form-label">
+                        <i class='bx bx-neighborhood'></i>
+                        <select name="junta_de_vecinos" id="id_junta_de_vecinos" class="select-field transparent-select" style="height: 40px;">
+                            <option value="" disabled selected>Junta de Vecinos</option>
+                            {% for value, label in form.junta_de_vecinos.field.choices %}
+                                <option value="{{ value }}">{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    
+                
+                    <input type="submit" value="Registrar">
                 </form>
             </div>
-            
         </div>
     </div>
 
-    
-
-
     <script src="{% static 'js/iniciar_secion.js' %}"></script>
-
-    
 </body>
 
 </html>

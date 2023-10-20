@@ -36,3 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
             form.submit();
         });
     });
+
+
+$(document).ready(function() {
+    $('#select-sexo').select2({
+        placeholder: "Sexo",
+        minimumResultsForSearch: -1, // Esto oculta la barra de búsqueda
+    });
+});
+

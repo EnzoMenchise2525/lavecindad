@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Vecindad Presidente</title>
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    
+    <!-- Enlaces a Bootstrap y Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'perfil.css' %}">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'noticias_junta_presidente' %}">
+            <img src="{% static 'img/logo.png' %}" alt="La Vecindad Logo" class="logo-img">
+            <span class="brand-text">La Vecindad</span>
+        </a>
+        
+        <!-- Botón del menú responsive para dispositivos móviles -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil_presidente' %}">
+                        <i class="fas fa-user"></i> Perfil
+                    </a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usuarios_junta' %}">
+                        <i class="fas fa-users"></i> Miembros
+                    </a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'agregar_noticia' %}">
+                        <i class="fas fa-newspaper"></i> Agregar Noticia
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mensajes_recibidos_presidente' %}">
+                        <i class="fas fa-envelope"></i> Mensajes Recibidos
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Información de Contacto</h3>
+              <p>La Vecindad</p>
+              <p>Correo Electrónico: juntadevecinoslavecindad@gmail.com</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Enlaces Rápidos</h3>
+              <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acerca de Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h3>Suscríbete</h3>
+              <p>Recibe actualizaciones y noticias</p>
+              <form>
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Tu Correo Electrónico">
+                </div>
+                <button type="submit" class="btn btn-primary">Suscribirse</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+</body>
+</html>
