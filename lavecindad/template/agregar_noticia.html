@@ -1,14 +1,14 @@
 {% extends 'base_presidente.html' %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5" style="margin-bottom: 30px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-0 shadow-lg">
                 <div class="card-header bg-primary text-white">
                     <h2 class="mb-0">Agregar Noticia</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body" >
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -23,4 +23,21 @@
         </div>
     </div>
 </div>
+
+{% for noticia in noticias %}
+    <div class="card mb-4">
+        <div class="card-header">
+            {{ noticia.titulo }}
+            <a href="{% url 'eliminar_noticia' noticia.id %}" class="btn btn-danger float-right" data-toggle="tooltip" data-placement="top" title="Eliminar Noticia" onclick="return confirm('¿Estás seguro de que deseas eliminar esta noticia?')">
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            <img src="{{ noticia.imagen.url }}" alt="Imagen de la noticia" class="img-thumbnail" style="max-width: 200px; float: left; margin-right: 10px;">
+            <p>{{ noticia.contenido|slice:":500" }}...</p>
+        </div>
+    </div>
+{% endfor %}
+
+
 {% endblock %}

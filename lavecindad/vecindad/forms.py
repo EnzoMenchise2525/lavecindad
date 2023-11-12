@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model  # Importa get_user_model
 from django.db import models
 
 from vecindad.validators import validate_rut
-from .models import JuntaDeVecinos, Mensaje, NoticiaJuntaVecinos, UsuarioPersonalizado
+from .models import JuntaDeVecinos, Mensaje, NoticiaJuntaVecinos, Proyecto, UsuarioPersonalizado
 
 
 class AlgunaClase(models.Model):
@@ -157,3 +157,17 @@ class MensajeModalForm(forms.ModelForm):
         self.fields['asunto'].widget = forms.TextInput(attrs={'class': 'form-control'})
         self.fields['contenido_presidente'].widget = forms.Textarea(attrs={'class': 'form-control', 'rows': 4})
 
+
+class PostulacionProyectoForm(forms.ModelForm):
+    class Meta:
+        model = Proyecto
+        fields = ['titulo', 'descripcion', 'categoria']
+
+class AprobacionProyectoForm(forms.Form):
+    proyecto_id = forms.IntegerField(widget=forms.HiddenInput())
+    ESTADO_CHOICES = [
+        ('A', 'Aprobar'),
+        ('R', 'Rechazar'),
+    ]
+
+    estado = forms.ChoiceField(choices=ESTADO_CHOICES, widget=forms.RadioSelect)

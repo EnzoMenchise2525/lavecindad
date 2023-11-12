@@ -6,7 +6,7 @@ class Command(BaseCommand):
     help = 'Carga datos desde un archivo JSON a la tabla JuntaDeVecinos'
 
     def handle(self, *args, **kwargs):
-        ruta_json = 'C:/Users/javie/Downloads/lavecindad-main/lavecindad/vecindad/static/sedes.json'  # Reemplaza con la ruta correcta al archivo JSON
+        ruta_json = 'C:/Users/enzom/Desktop/lavecindad-main/lavecindad-main/lavecindad/vecindad/static/sedes.json'  # Reemplaza con la ruta correcta al archivo JSON
 
         with open(ruta_json, 'r', encoding='utf-8') as archivo_json:
             datos_json = json.load(archivo_json)

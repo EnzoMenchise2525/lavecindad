@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Postular Proyecto</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="custom-button">Postular Proyecto</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>Tus Proyectos Postulados</h2>
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Fecha de Postulación</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for proyecto in proyectos_postulados %}
+          <tr>
+            <td>{{ proyecto.titulo }}</td>
+            <td>{{ proyecto.descripcion }}</td>
+            <td>{{ proyecto.get_categoria_display }}</td>
+            <td>{{ proyecto.fecha_postulacion }}</td>
+            <td>
+              {% if proyecto.estado == 'A' %}
+              <span class="custom-badge custom-badge-success">Aprobado</span>
+              {% elif proyecto.estado == 'R' %}
+              <span class="custom-badge custom-badge-danger">Rechazado</span>
+              {% else %}
+              <span class="custom-badge custom-badge-warning">Pendiente</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.container{
+
+    font-size: 13px;
+}
+    /* Estilo para el botón */
+.custom-button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilo para la tabla */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para las etiquetas de estado */
+.custom-badge {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.custom-badge-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.custom-badge-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.custom-badge-warning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+</style>
+{% endblock %}

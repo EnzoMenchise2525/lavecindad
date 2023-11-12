@@ -77,3 +77,36 @@ class Mensaje(models.Model):
     def __str__(self):
         return f'{self.emisor} -> {self.receptor}'
 
+
+
+class Proyecto(models.Model):
+    CATEGORIAS = (
+        ('Mantenimiento y Reparaciones', 'Mantenimiento y Reparaciones'),
+        ('Eventos Sociales', 'Eventos Sociales'),
+        ('Medio Ambiente', 'Medio Ambiente'),
+        ('Seguridad', 'Seguridad'),
+        ('Servicios Comunitarios', 'Servicios Comunitarios'),
+        ('Infraestructura', 'Infraestructura'),
+        ('Educación', 'Educación'),
+        ('Deportes y Recreación', 'Deportes y Recreación'),
+        ('Salud y Bienestar', 'Salud y Bienestar'),
+        ('Cultura y Arte', 'Cultura y Arte'),
+    )
+
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    residente = models.ForeignKey('UsuarioPersonalizado', related_name='residente', on_delete=models.CASCADE, null=True, blank=True)
+    presidente = models.ForeignKey('UsuarioPersonalizado', related_name='presidente', on_delete=models.CASCADE, null=True, blank=True)
+
+    ESTADO_CHOICES = [
+            ('A', 'Aprobado'),
+            ('R', 'Rechazado'),
+            ('P', 'Pendiente'),
+        ]
+    
+    estado = models.CharField(max_length=1, choices=ESTADO_CHOICES, default='P')   
+    fecha_postulacion = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    categoria = models.CharField(max_length=100, choices=CATEGORIAS, null=True, blank=True)
+
+    def __str__(self):
+        return self.titulo

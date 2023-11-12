@@ -20,6 +20,7 @@ from vecindad import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('', views.sesion, name='iniciar_sesion'),  # Reemplaza 'views' con el módulo que contiene tu vista personalizada
@@ -40,6 +41,9 @@ urlpatterns = [
     path('enviar_mensaje/', views.enviar_mensaje, name='enviar_mensaje'),
     path('mensajes_recibidos_presidente/', views.mensajes_recibidos_presidente, name='mensajes_recibidos_presidente'),
     path('descargar_pdf/', views.descargar_pdf, name='descargar_pdf'),
+    path('postular_proyecto/', views.postular_proyecto, name='postular_proyecto'),
+    path('proyectos_pendientes/', views.proyectos_pendientes, name='proyectos_pendientes'),
+    path('eliminar_noticia/<int:noticia_id>/', views.eliminar_noticia, name='eliminar_noticia'),
 
 ]
 if settings.DEBUG:

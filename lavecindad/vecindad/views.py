@@ -6,11 +6,13 @@ from vecindad.decorators import anonymous_required, usuario_presidente_required,
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
-from .forms import EditProfileForm, MensajeModalForm, NoticiaForm, RegistroForm, InicioSesionForm
+from .forms import AprobacionProyectoForm, EditProfileForm, MensajeModalForm, NoticiaForm, PostulacionProyectoForm, RegistroForm, InicioSesionForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from .forms import MensajeForm
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
+
 
 # Create your views here.
 import os
@@ -30,6 +32,7 @@ def descargar_pdf(request):
         return HttpResponse('El archivo PDF no se encontró.', status=404)
 
 
+@csrf_exempt
 @anonymous_required
 def registro(request):
     
@@ -65,6 +68,7 @@ def registro(request):
 
     return render(request, 'registro.html', {'form': form})
 
+@csrf_exempt
 @anonymous_required
 def registro_presidente(request):
     if request.method == 'POST':
@@ -115,6 +119,7 @@ def registro_presidente(request):
     return render(request, 'registro_presidente.html', {'form': form})
 
 
+@csrf_exempt
 @anonymous_required
 def sesion(request):
     if 'registro_exitoso' in request.GET:
@@ -154,6 +159,7 @@ def sesion(request):
 
 
 
+@csrf_exempt
 @usuario_residente_required
 def noticias_junta(request):
     usuario = request.user
@@ -162,13 +168,16 @@ def noticias_junta(request):
     return render(request, 'noticias_junta.html', {'noticias': noticias, 'junta_de_vecinos': junta_de_vecinos})
 
 
-@usuario_presidente_required  
+@csrf_exempt
+@usuario_presidente_required
 def noticias_junta_presidente(request):
     usuario = request.user
     junta_de_vecinos = usuario.junta_de_vecinos
     noticias = NoticiaJuntaVecinos.objects.filter(junta_de_vecinos=junta_de_vecinos).order_by('-fecha_publicacion')
     return render(request, 'noticias_junta_presidente.html', {'noticias': noticias, 'junta_de_vecinos': junta_de_vecinos})
 
+
+@csrf_exempt
 @usuario_presidente_required
 def ver_noticia_presidente(request, noticia_id):
     noticia = get_object_or_404(NoticiaJuntaVecinos, pk=noticia_id)
@@ -186,6 +195,7 @@ def ver_noticia_presidente(request, noticia_id):
     })
 
 
+@csrf_exempt
 @usuario_residente_required
 def ver_noticia(request, noticia_id):
     noticia = get_object_or_404(NoticiaJuntaVecinos, pk=noticia_id)
@@ -195,12 +205,15 @@ def ver_noticia(request, noticia_id):
     PAGE_URL = request.build_absolute_uri()  # Esto obtiene la URL actual
     PAGE_IDENTIFIER = f'noticia-{noticia.id}'  # Usa el ID de la noticia como identificador único
 
-    return render(request, 'ver_noticia_presidente.html', {
+    return render(request, 'ver_noticia.html', {
         'noticia': noticia,
         'junta_id': junta_id,
         'PAGE_URL': PAGE_URL,  # Pasa las variables PAGE_URL y PAGE_IDENTIFIER al contexto
         'PAGE_IDENTIFIER': PAGE_IDENTIFIER,
     })
+
+
+@csrf_exempt
 @usuario_residente_required
 def perfil(request):
     usuario = request.user
@@ -218,7 +231,9 @@ def perfil(request):
 
     return render(request, 'perfil.html', {'usuario': usuario, 'form': form})
 
-@usuario_presidente_required  
+
+@csrf_exempt
+@usuario_presidente_required
 def perfil_presidente(request):
     usuario = request.user
 
@@ -235,6 +250,7 @@ def perfil_presidente(request):
 
     return render(request, 'perfil_presidente.html', {'usuario': usuario, 'form': form})
 
+@csrf_exempt
 @login_required
 def cerrar_sesion(request):
     logout(request)
@@ -242,6 +258,7 @@ def cerrar_sesion(request):
 
 
 
+@csrf_exempt
 @login_required
 def eliminar_cuenta(request):
     if request.method == 'POST':
@@ -250,8 +267,10 @@ def eliminar_cuenta(request):
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 
-#Para ver usuarios de la junta del presidente
-@usuario_presidente_required  
+
+
+@csrf_exempt
+@usuario_presidente_required
 def usuarios_junta(request):
     # Obtén al usuario actualmente autenticado (presidente)
     presidente = request.user
@@ -262,8 +281,10 @@ def usuarios_junta(request):
     # Pasa los usuarios a la plantilla
     return render(request, 'usuarios_junta.html', {'usuarios_junta': usuarios_junta})
 
-#Para editar algún usuario de la junta de presidente
-@usuario_presidente_required  
+
+
+@csrf_exempt
+@usuario_presidente_required
 def editar_usuario_presidente(request, usuario_id):
     usuario = UsuarioPersonalizado.objects.get(id=usuario_id)
 
@@ -281,8 +302,8 @@ def editar_usuario_presidente(request, usuario_id):
 
 
 
-# Para eliminar un usuario desde las vistas de presidente
-@usuario_presidente_required  
+@csrf_exempt
+@usuario_presidente_required
 def eliminar_cuenta_presidente(request, usuario_id):
     try:
         usuario = UsuarioPersonalizado.objects.get(id=usuario_id)
@@ -291,10 +312,12 @@ def eliminar_cuenta_presidente(request, usuario_id):
     except UsuarioPersonalizado.DoesNotExist:
         return JsonResponse({'success': False})
 
+
 # Para que se envie correo al subir una nueva noticia
 def enviar_correo_a_usuarios_junta(noticia, presidente):
     # Obtener la lista de correos electrónicos de los usuarios de la junta
-    correos = UsuarioPersonalizado.objects.filter(id_sede=noticia.junta_de_vecinos.id).exclude(id=presidente.id).values_list('email', flat=True)
+    correos = UsuarioPersonalizado.objects.filter(junta_de_vecinos=noticia.junta_de_vecinos.id).exclude(id=presidente.id).values_list('email', flat=True)
+    print("Lista de correos electrónicos:", correos)
 
     # Enviar un correo a cada usuario de la junta
     for correo in correos:
@@ -306,9 +329,11 @@ def enviar_correo_a_usuarios_junta(noticia, presidente):
             fail_silently=False,
         )
 
-# Vista para crear una nueva noticia (presidente)
+@csrf_exempt
 @usuario_presidente_required
 def agregar_noticia(request):
+    noticia = NoticiaJuntaVecinos.objects.filter(junta_de_vecinos=request.user.junta_de_vecinos)
+
     if request.method == 'POST':
         form = NoticiaForm(request.POST, request.FILES)
         if form.is_valid():
@@ -324,10 +349,27 @@ def agregar_noticia(request):
     else:
         form = NoticiaForm()
     
-    return render(request, 'agregar_noticia.html', {'form': form})
+    return render(request, 'agregar_noticia.html', {'form': form, 'noticias': noticia})
 
 
-#Enviar mensajes por parte de residente
+@csrf_exempt
+@usuario_presidente_required
+def eliminar_noticia(request, noticia_id):
+    try:
+        noticia = NoticiaJuntaVecinos.objects.get(id=noticia_id)
+        
+        # Verifica si la noticia pertenece al usuario actual (presidente)
+        if noticia.junta_de_vecinos == request.user.junta_de_vecinos:
+            noticia.delete()
+            return redirect(reverse('agregar_noticia'))
+        else:
+            return JsonResponse({'error': 'No tienes permiso para eliminar esta noticia.'})
+        
+    except NoticiaJuntaVecinos.DoesNotExist:
+        return JsonResponse({'error': 'La noticia no existe.'})
+    
+    
+@csrf_exempt
 @usuario_residente_required
 def enviar_mensaje(request):
     if request.method == 'POST':
@@ -375,7 +417,8 @@ def enviar_mensaje(request):
     remitente_original = request.user.email
     return render(request, 'enviar_mensaje.html', {'form': form, 'remitente_original': remitente_original})
 
-# Para la vista de mensajes recibidos de presidente
+
+@csrf_exempt
 @usuario_presidente_required
 def mensajes_recibidos_presidente(request):
     
@@ -410,3 +453,63 @@ def mensajes_recibidos_presidente(request):
         
 
         return render(request, 'mensajes_recibidos_presidente.html', {'mensajes_recibidos': mensajes_recibidos, 'form': form})
+
+
+@csrf_exempt
+@usuario_residente_required
+def postular_proyecto(request):
+    if request.method == 'POST':
+        form = PostulacionProyectoForm(request.POST)
+        if form.is_valid():
+            proyecto = form.save(commit=False)
+            proyecto.residente = request.user
+            destinatarios = UsuarioPersonalizado.objects.filter(
+                junta_de_vecinos=request.user.junta_de_vecinos,
+                id_sede__isnull=False,
+                id_sede__gt=""
+            )
+            if destinatarios:
+                # Envía el mensaje a todos los destinatarios
+                for destinatario in destinatarios:
+                    proyecto.presidente = destinatario
+                    proyecto.save()
+
+            messages.success(request, 'Proyecto postulado correctamente')
+
+            return redirect('postular_proyecto')  # Redirigir a la lista de proyectos pendientes
+
+    else:
+        form = PostulacionProyectoForm()
+    
+    proyectos_postulados = Proyecto.objects.filter(residente=request.user).order_by('-fecha_postulacion')
+
+
+    return render(request, 'postular_proyecto.html', {'form': form, 'proyectos_postulados': proyectos_postulados})
+
+
+@csrf_exempt
+@usuario_presidente_required
+def proyectos_pendientes(request):
+    proyectos_pendientes = Proyecto.objects.filter(estado='P', presidente=request.user).order_by('-fecha_postulacion')
+
+    if request.method == 'POST':
+        form = AprobacionProyectoForm(request.POST)
+        if form.is_valid():
+            proyecto_id = form.cleaned_data['proyecto_id']
+            estado = form.cleaned_data['estado']
+
+            proyecto = Proyecto.objects.get(pk=proyecto_id)
+            if estado == 'A':
+                proyecto.estado = 'A'  # Aprobar
+                proyecto.fecha_aprobacion = timezone.now()
+            elif estado == 'R':
+                proyecto.estado = 'R'  # Rechazar
+                proyecto.fecha_rechazo = timezone.now()
+            proyecto.save()
+
+            return redirect('proyectos_pendientes')
+
+    else:
+        form = AprobacionProyectoForm()
+
+    return render(request, 'proyectos_pendientes.html', {'proyectos_pendientes': proyectos_pendientes, 'form': form})

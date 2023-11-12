@@ -1,0 +1,74 @@
+{% extends 'base_presidente.html' %}
+
+{% block content %}
+<style>
+    .custom-table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .custom-table th, .custom-table td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .custom-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .custom-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .custom-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+
+<form method="post">
+    {% csrf_token %}
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Aprobar</th>
+                <th>Rechazar</th>
+                <th>Enviar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in proyectos_pendientes %}
+                <tr>
+                    <td>{{ proyecto.titulo }}</td>
+                    <td>{{ proyecto.descripcion }}</td>
+                    <td>
+                        <input type="radio" name="estado" value="A" id="aprobar_{{ proyecto.id }}">
+                        <label for="aprobar_{{ proyecto.id }}">Aprobar</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="estado" value="R" id="rechazar_{{ proyecto.id }}">
+                        <label for="rechazar_{{ proyecto.id }}">Rechazar</label>
+                    </td>
+                    <td>
+                        <button type="submit" class="custom-button">Enviar</button>
+                    </td>
+                    <input type="hidden" name="proyecto_id" value="{{ proyecto.id }}">
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

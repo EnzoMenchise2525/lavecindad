@@ -10,26 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 from django.contrib.messages import constants as mensajes_de_error
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-fhn9md=@mm*)clz#rx2x)9(jas)p@#zhv_phi(r^-b%70z5gqx'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['755a-186-78-183-213.ngrok-free.app', 'localhost', '127.0.0.1']
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,10 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'vecindad',
     'crispy_forms',
-
+    
+   
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -54,10 +46,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    
+    
 ]
 
 ROOT_URLCONF = 'lavecindad.urls'
@@ -80,58 +70,36 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lavecindad.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql', #Necesito haber instalado el paquete cx_oracle (pip)
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lavecindad',
         'USER': 'lavecindad',
-        'PASSWORD':'lavecindad',       
-
+        'PASSWORD': 'lavecindad',
     }
 }
 
+# Resto de la configuración de validación de contraseñas, internacionalización, archivos estáticos y más.
 
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Nueva configuración para el directorio de archivos estáticos en producción
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+# Resto de la configuración ...
 
+if not DEBUG:
+    # En un entorno de producción, servimos archivos estáticos usando la configuración de STATIC_ROOT
+    # Configura tu servidor web para que sirva los archivos estáticos desde esta ubicación.
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'vecindad/static'),
+        os.path.join(BASE_DIR, 'vecindad/static/img'),
+        os.path.join(BASE_DIR, 'vecindad/static/js'),
+    ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LANGUAGE_CODE = 'es-cl'
-
-TIME_ZONE = 'America/Santiago'
-
-USE_I18N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 
 # Default primary key field type

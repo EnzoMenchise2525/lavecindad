@@ -1,32 +1,30 @@
 {% extends 'base_presidente.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    {% if junta_id %}
-        <a href="{% url 'noticias_junta_presidente' %}" class="btn btn-secondary mb-3">Volver a la lista de noticias</a>
-    {% endif %}
+{% if junta_id %}
+<a href="{% url 'noticias_junta' %}" class="btn btn-secondary mb-3">Volver a la lista de noticias</a>
+{% endif %}
+<div class="container mt-4 d-flex justify-content-center align-items-center">
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card" style="margin-bottom: 20px;">
-                <div class="card-header">
-                    <h1 class="card-title">{{ noticia.titulo }}</h1>
-                </div>
-                <div class="card-body">
-                    {% if noticia.imagen %}
-                        <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3">
-                    {% endif %}
-                    <p class="card-text">{{ noticia.contenido }}</p>
-                </div>
-                <div class="card-footer text-muted">
-                    Fecha de publicación: {{ noticia.fecha_publicacion }}
-                </div>
+    <div class="card text-center" style="margin-bottom: 20px;">
+        <div class="card-header">
+            <h1 class="card-title">{{ noticia.titulo }}</h1>
+        </div>
+        <div class="card-body">
+            {% if noticia.imagen %}
+                <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" class="img-fluid mb-3 mx-auto d-block">
+            {% endif %}
+            <div class="card-text mx-auto text-justify" style="max-width: 900px;">
+                {{ noticia.contenido|linebreaksbr }}
             </div>
+        </div>
+        <div class="card-footer text-muted">
+            Fecha de publicación: {{ noticia.fecha_publicacion }}
         </div>
     </div>
 </div>
 
-<div id="disqus_thread"></div>
+<div id="disqus_thread" class="mt-4"></div>
 <script>
     var disqus_config = function () {
         this.page.url = '{{ PAGE_URL|safe }}';  // Usamos la variable PAGE_URL
@@ -39,5 +37,4 @@
         (d.head || d.body).appendChild(s);
     })();
 </script>
-
 {% endblock %}

@@ -43,13 +43,19 @@
     
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'agregar_noticia' %}">
-                        <i class="fas fa-newspaper"></i> Agregar Noticia
+                        <i class="fas fa-newspaper"></i> + Noticia
                     </a>
                 </li>
                 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'mensajes_recibidos_presidente' %}">
-                        <i class="fas fa-envelope"></i> Mensajes Recibidos
+                        <i class="fas fa-envelope"></i> Mensajes
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'proyectos_pendientes' %}">
+                        <i class="fas fa-envelope"></i> Revisar proyectos
                     </a>
                 </li>
                 
@@ -105,6 +111,6 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-
+    
 </body>
 </html>
